@@ -13,7 +13,6 @@ CREATE TABLE IF NOT EXISTS Videogioco(
 	Prezzo decimal(5,2) NOT NULL,
 	Studio varchar(30) NOT NULL,
 	Data_uscita date NOT NULL,
-	Piattaforme varchar(30) NOT NULL,
 	PEGI varchar(20) NOT NULL,
 	PRIMARY KEY(ID_Prodotto)
 );
