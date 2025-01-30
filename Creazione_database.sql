@@ -85,7 +85,7 @@ CREATE TABLE IF NOT EXISTS Casella_postale(
 );
 
 CREATE TABLE IF NOT EXISTS Abbonamento(
-	Codice_abbonamento int AUTO_INCREMENT,
+	Codice_abbonamento int,
 	Cliente varchar(20) REFERENCES Cliente(Codice_fiscale),
 	Data_inizio date NOT NULL,
 	Durata int default 3 NOT NULL,
@@ -109,7 +109,7 @@ CREATE TABLE IF NOT EXISTS Ordine(
 
 CREATE TABLE IF NOT EXISTS Contenere_Merchandise(
 	merchandise int REFERENCES Merchandise(ID_Prodotto),
-	ordine int REFERENCES Ordine(Codice_odrine),
+	ordine int REFERENCES Ordine(Codice_ordine),
 	quantità int NOT NULL,
 	PRIMARY KEY(merchandise, ordine)
 )
