@@ -10,11 +10,11 @@ INSERT INTO Genere (tipo) VALUES
 
 -- Inserimento dati nella tabella Videogioco
 INSERT INTO Videogioco (nome, Prezzo, Studio, Data_uscita, PEGI) VALUES
-('The Witcher 3', 49.99, 'CD Projekt Red', '2015-05-19', '18'),
-('FIFA 22', 59.99, 'EA Sports', '2021-10-01', '3'),
-('Cyberpunk 2077', 39.99, 'CD Projekt Red', '2020-12-10', '18'),
-('Minecraft', 29.99, 'Mojang', '2011-11-18', '7'),
-('Assassin\'s Creed Valhalla', 59.99, 'Ubisoft', '2020-11-10', '18');
+('The Witcher 3', 49.99, 'CD Projekt Red', '2015-05-19', 18),
+('FIFA 22', 59.99, 'EA Sports', '2021-10-01', 3),
+('Cyberpunk 2077', 39.99, 'CD Projekt Red', '2020-12-10', 18),
+('Minecraft', 29.99, 'Mojang', '2011-11-18', 7),
+('Assassin\'s Creed Valhalla', 59.99, 'Ubisoft', '2020-11-10', 18);
 
 -- Inserimento dati nella tabella Piattaforma
 INSERT INTO Piattaforma (Nome) VALUES
