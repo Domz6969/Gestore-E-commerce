@@ -6,10 +6,10 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         System.out.println("Benvenuto. Seleziona l'operazione da eseguire" +
-                "\nAggiungi nuovo videogioco." +
-                "\nModifica il pegi di un videogioco" +
-                "\nRimuovi un videogioco" +
-                "\nVisualizza i videogiochi di un determinato studio");
+                "\n1) Aggiungi nuovo videogioco." +
+                "\n2) Modifica il pegi di un videogioco" +
+                "\n3) Rimuovi un videogioco" +
+                "\n4) Visualizza i videogiochi di un determinato studio");
 
         Scanner sc = new Scanner(System.in);
         var service = new OperazioniBD();
@@ -20,11 +20,13 @@ public class Main {
                 Videogioco videogioco = new Videogioco();
                 System.out.println("Inserisci i dati del videogioco");
                 System.out.println("Nome:");
-                videogioco.setNome(sc.next());
+                sc.nextLine();
+                videogioco.setNome(sc.nextLine());
                 System.out.println("Prezzo:");
                 videogioco.setPrezzo(sc.nextDouble());
                 System.out.println("Studio:");
-                videogioco.setStudio(sc.next());
+                sc.nextLine();
+                videogioco.setStudio(sc.nextLine());
                 System.out.println("Data di uscita (YYYY-MM-DD)");
                 videogioco.setData_uscita(Date.valueOf(sc.nextLine()));
                 System.out.println("PEGI:");

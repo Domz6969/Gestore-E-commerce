@@ -11,7 +11,7 @@ public class OperazioniBD {
                             "nome," +
                             "Prezzo," +
                             "Studio," +
-                            "Data_uscita" +
+                            "Data_uscita," +
                             "PEGI" +
                             ") VALUES(?,?,?,?,?)");
 
