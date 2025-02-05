@@ -1,6 +1,7 @@
 package Database;
 
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
@@ -37,6 +38,33 @@ public class Main {
 
                 break;
 
+            case 2:
+                System.out.println("Operazione selezionata: Modifica pegi di un videogioco");
+                System.out.println("Inserisci l'ID prodotto del videogioco il cui pegi deve essere modificato");
+                int ID= sc.nextInt();
+                System.out.println("Inserire il nuovo PEGI");
+                int pegi = sc.nextInt();
+                sc.close();
+                service.Operazione2(ID,pegi);
+                System.out.println("Operazione eseguita con successo");
+                break;
+
+            case 3:
+                System.out.println("Operazione selezionata: Rimozione di un videogioco");
+                System.out.println("Inserisci ID del videogioco da rimuovere");
+                service.Operazione3(sc.nextInt());
+                sc.close();
+                System.out.println("Operazione eseguita con successo");
+                break;
+            case 4:
+                System.out.println("Operazione selezionata: Visualizza i videogiochi di un determinato studio");
+                ArrayList<Videogioco> giochi=new ArrayList<Videogioco>();
+                System.out.println("Inserisci lo studio di cui desideri visualizzare i videogiochi");
+                giochi=service.Operazione4(sc.nextLine());
+                sc.close();
+                System.out.println("Operazione completat con successo");
+                System.out.println(giochi.size());
+                break;
             default:
                 System.out.println("Scelta non valida");
         }

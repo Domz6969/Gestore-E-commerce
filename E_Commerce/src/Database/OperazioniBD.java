@@ -1,6 +1,7 @@
 package Database;
 
 import java.sql.*;
+import java.util.ArrayList;
 
 public class OperazioniBD {
     public void Operazione1(Videogioco videogioco){
@@ -29,5 +30,47 @@ public class OperazioniBD {
             System.out.println("Errore di connessione database.");
             throw new RuntimeException(e);
         }
+    }
+    public void Operazione2(int id,int pegi){
+        try (Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/e_commerce_videogiochi","root","694200")){
+            PreparedStatement ps = con.prepareStatement("UPDATE Videogioco SET PEGI =? WHERE ID_Prodotto=?");
+
+            ps.setInt(1,pegi);
+            ps.setInt(2,id);
+            if(ps.executeUpdate()!=1){
+                throw new RuntimeException("Errore durante l'aggiornamento del telefono: nessuna riga aggiornata.");
+            }
+        }catch(SQLException e){
+            throw new RuntimeException(e);
+        }
+    }
+    public void Operazione3(int id){
+        try(Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/e_commerce_videogiochi","root","694200")){
+            Statement statement = con.createStatement();
+            statement.execute("SET FOREIGN_KEY_CHECKS = 0");
+            PreparedStatement ps=con.prepareStatement("DELETE FROM Videogioco WHERE ID_Prodotto=?");
+            ps.setInt(1,id);
+            if(ps.executeUpdate()!=1){
+                throw new RuntimeException("Errore eliminazione dal database.");
+            }
+        }catch(SQLException e){
+            throw new RuntimeException(e);
+        }
+    }
+    public ArrayList<Videogioco> Operazione4(String studio){
+        ArrayList listagiochi =new ArrayList<>();
+        ResultSet rs;
+        try(Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/e_commerce_videogiochi","root","694200")){
+            PreparedStatement ps= con.prepareStatement("SELECT * FROM Videogioco WHERE Studio=?");
+            ps.setString(1,studio);
+            rs=ps.executeQuery();
+            while(rs.next()){
+                Videogioco vd= new Videogioco();
+
+            }
+        }catch(SQLException e){
+            throw new RuntimeException(e);
+        }
+        return
     }
 }
