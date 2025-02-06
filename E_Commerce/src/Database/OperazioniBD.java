@@ -31,6 +31,7 @@ public class OperazioniBD {
             throw new RuntimeException(e);
         }
     }
+
     public void Operazione2(int id,int pegi){
         try (Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/e_commerce_videogiochi","root","694200")){
             PreparedStatement ps = con.prepareStatement("UPDATE Videogioco SET PEGI =? WHERE ID_Prodotto=?");
@@ -44,6 +45,7 @@ public class OperazioniBD {
             throw new RuntimeException(e);
         }
     }
+
     public void Operazione3(int id){
         try(Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/e_commerce_videogiochi","root","694200")){
             Statement statement = con.createStatement();
@@ -57,15 +59,16 @@ public class OperazioniBD {
             throw new RuntimeException(e);
         }
     }
+
     public ArrayList<Videogioco> Operazione4(String studio){
         ArrayList<Videogioco> listaGiochi = new ArrayList<>();
         ResultSet rs;
         try(Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/e_commerce_videogiochi","root","694200")){
-            PreparedStatement ps= con.prepareStatement("SELECT * FROM Videogioco WHERE Studio = ?");
+            PreparedStatement ps = con.prepareStatement("SELECT * FROM Videogioco WHERE Studio = ?");
             ps.setString(1,studio);
-            rs=ps.executeQuery();
+            rs = ps.executeQuery();
             while(rs.next()){
-                Videogioco vd= new Videogioco();
+                Videogioco vd = new Videogioco();
 
                 vd.setID(rs.getInt(1));
                 vd.setNome(rs.getString(2));
@@ -79,6 +82,32 @@ public class OperazioniBD {
 
             return listaGiochi;
             
+        }catch(SQLException e){
+            throw new RuntimeException(e);
+        }
+    }
+
+    public ArrayList<Merchandise> Operazione5(String tipo){
+        ArrayList<Merchandise> listaMerce = new ArrayList<>();
+        ResultSet rs;
+        try(Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/e_commerce_videogiochi","root","694200")){
+            PreparedStatement ps = con.prepareStatement("SELECT * FROM Merchandise WHERE tipo = ?");
+            ps.setString(1, tipo);
+            rs = ps.executeQuery();
+            while(rs.next()){
+                Merchandise m = new Merchandise();
+
+                m.setID(rs.getInt(1));
+                m.setNome(rs.getString(2));
+                m.setDimensione(rs.getDouble(3));
+                m.setTipo(rs.getString(4));
+                m.setPrezzo(rs.getDouble(5));
+                m.setPeso(rs.getDouble(6));
+
+                listaMerce.add(m);
+            }
+
+            return listaMerce;
         }catch(SQLException e){
             throw new RuntimeException(e);
         }

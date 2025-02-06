@@ -64,6 +64,11 @@ public class Videogioco {
 
     @Override
     public String toString(){
-        return "Videogioco ID: " + getID() + "\n\tNome: " + getNome() + "\n\tPrezzo: " + getPrezzo() + "\n\tStudio: " + getStudio() + "\n\tData di uscita: " + getData_uscita() + "\n\tPEGI: " + getPegi();
+        return "Videogioco ID: " + getID() +
+                "\n\tNome: " + getNome() +
+                "\n\tPrezzo: " + getPrezzo() +
+                "\n\tStudio: " + getStudio() +
+                "\n\tData di uscita: " + getData_uscita() +
+                "\n\tPEGI: " + getPegi();
     }
 }
