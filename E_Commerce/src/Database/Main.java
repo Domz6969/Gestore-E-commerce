@@ -75,9 +75,15 @@ public class Main {
                     sc.nextLine();
                     giochi=service.Operazione4(sc.nextLine());
 
-                    System.out.println("Operazione completata con successo, ecco la lista dei prodotti:");
-                    for(Videogioco v : giochi){
-                        System.out.println(v);
+                    if(giochi.isEmpty()){
+                        System.out.println("Non sono presenti videogiochi dello studio selezionato");
+                    }
+
+                    else {
+                        System.out.println("Operazione completata con successo, ecco la lista dei prodotti:");
+                        for (Videogioco v : giochi) {
+                            System.out.println(v);
+                        }
                     }
                     break;
 
@@ -89,9 +95,15 @@ public class Main {
                     sc.nextLine();
                     merch = service.Operazione5(sc.nextLine());
 
-                    System.out.println("Operazione completata con successo, ecco la lista dei prodotti");
-                    for(Merchandise m : merch){
-                        System.out.println(m);
+                    if(merch.isEmpty()){
+                        System.out.println("Non è presente merchandise del tipo selezionato");
+                    }
+
+                    else {
+                        System.out.println("Operazione completata con successo, ecco la lista dei prodotti");
+                        for (Merchandise m : merch) {
+                            System.out.println(m);
+                        }
                     }
                     break;
                 default:
