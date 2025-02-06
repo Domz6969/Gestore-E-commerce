@@ -7,8 +7,11 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         int scelta;
+        var service = new OperazioniBD();
+        service.connessioneDB();
         do{
             System.out.println("Benvenuto. Seleziona l'operazione da eseguire" +
+                    "\n0) Chiudi programma"+
                     "\n1) Aggiungi nuovo videogioco." +
                     "\n2) Modifica il pegi di un videogioco" +
                     "\n3) Rimuovi un videogioco" +
@@ -16,12 +19,13 @@ public class Main {
                     "\n5) Visualizza il merchandise di un determinato tipo ");
 
             Scanner sc = new Scanner(System.in);
-            var service = new OperazioniBD();
             scelta = sc.nextInt();
             switch(scelta){
                 case 0:
                     System.out.println("Chiusura programma. Arrivederci");
                     sc.close();
+                    service.chiudiConnessione();
+                    break;
                 case 1:
                     System.out.println("Operazione selezionata: Aggiungi un videogioco");
                     Videogioco videogioco = new Videogioco();
@@ -94,5 +98,6 @@ public class Main {
                     System.out.println("Scelta non valida");
             }
         }while(scelta != 0);
+
     }
 }

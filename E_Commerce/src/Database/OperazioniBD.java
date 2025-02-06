@@ -4,9 +4,33 @@ import java.sql.*;
 import java.util.ArrayList;
 
 public class OperazioniBD {
+    private static Connection con;
+
+    public void connessioneDB(){
+        try{
+            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/e_commerce_videogiochi", "root", "694200");
+            if(con != null){
+                System.out.println("Connessione al database effettuata con successo.");
+            }
+        } catch (Exception e){
+            System.out.println("Errore di connessione al database");
+        }
+    }
+
+    public void chiudiConnessione() {
+        try {
+            if (con != null && !con.isClosed()) {
+                con.close();
+                System.out.println("Connessione al database chiusa con successo.");
+            }
+        } catch (SQLException e) {
+            System.out.println("Errore nella chiusura della connessione: " + e.getMessage());
+        }
+    }
+
     public void Operazione1(Videogioco videogioco){
 
-        try(Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/e_commerce_videogiochi", "root", "694200")) {
+        try{
             PreparedStatement ps = con.prepareStatement(
                     "INSERT INTO Videogioco (" +
                             "nome," +
@@ -33,7 +57,7 @@ public class OperazioniBD {
     }
 
     public void Operazione2(int id,int pegi){
-        try (Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/e_commerce_videogiochi","root","694200")){
+        try{
             PreparedStatement ps = con.prepareStatement("UPDATE Videogioco SET PEGI =? WHERE ID_Prodotto=?");
 
             ps.setInt(1,pegi);
@@ -47,7 +71,7 @@ public class OperazioniBD {
     }
 
     public void Operazione3(int id){
-        try(Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/e_commerce_videogiochi","root","694200")){
+        try{
             Statement statement = con.createStatement();
             statement.execute("SET FOREIGN_KEY_CHECKS = 0");
             PreparedStatement ps=con.prepareStatement("DELETE FROM Videogioco WHERE ID_Prodotto=?");
@@ -63,7 +87,7 @@ public class OperazioniBD {
     public ArrayList<Videogioco> Operazione4(String studio){
         ArrayList<Videogioco> listaGiochi = new ArrayList<>();
         ResultSet rs;
-        try(Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/e_commerce_videogiochi","root","694200")){
+        try{
             PreparedStatement ps = con.prepareStatement("SELECT * FROM Videogioco WHERE Studio = ?");
             ps.setString(1,studio);
             rs = ps.executeQuery();
@@ -90,7 +114,7 @@ public class OperazioniBD {
     public ArrayList<Merchandise> Operazione5(String tipo){
         ArrayList<Merchandise> listaMerce = new ArrayList<>();
         ResultSet rs;
-        try(Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/e_commerce_videogiochi","root","694200")){
+        try{
             PreparedStatement ps = con.prepareStatement("SELECT * FROM Merchandise WHERE tipo = ?");
             ps.setString(1, tipo);
             rs = ps.executeQuery();
