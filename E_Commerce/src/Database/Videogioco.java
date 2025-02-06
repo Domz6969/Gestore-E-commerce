@@ -3,6 +3,7 @@ package Database;
 import java.sql.Date;
 
 public class Videogioco {
+    private int ID;
     private String nome;
     private double prezzo;
     private String studio;
@@ -16,6 +17,10 @@ public class Videogioco {
        data_uscita = Date.valueOf("2000-01-01");
        pegi = 0;
     }
+
+    public int getID(){return ID;}
+
+    public void setID(int ID){this.ID = ID;}
 
     public String getNome() {
         return nome;
@@ -55,5 +60,10 @@ public class Videogioco {
 
     public void setPegi(int pegi) {
         this.pegi = pegi;
+    }
+
+    @Override
+    public String toString(){
+        return "Videogioco ID: " + getID() + "\n\tNome: " + getNome() + "\n\tPrezzo: " + getPrezzo() + "\n\tStudio: " + getStudio() + "\n\tData di uscita: " + getData_uscita() + "\n\tPEGI: " + getPegi();
     }
 }

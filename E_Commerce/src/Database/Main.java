@@ -60,10 +60,13 @@ public class Main {
                 System.out.println("Operazione selezionata: Visualizza i videogiochi di un determinato studio");
                 ArrayList<Videogioco> giochi=new ArrayList<Videogioco>();
                 System.out.println("Inserisci lo studio di cui desideri visualizzare i videogiochi");
+                sc.nextLine();
                 giochi=service.Operazione4(sc.nextLine());
                 sc.close();
-                System.out.println("Operazione completat con successo");
-                System.out.println(giochi.size());
+                System.out.println("Operazione completata con successo, ecco la lista dei prodotti:");
+                for(Videogioco v : giochi){
+                    System.out.println(v);
+                }
                 break;
             default:
                 System.out.println("Scelta non valida");

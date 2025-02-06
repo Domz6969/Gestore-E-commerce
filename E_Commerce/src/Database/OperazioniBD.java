@@ -58,19 +58,29 @@ public class OperazioniBD {
         }
     }
     public ArrayList<Videogioco> Operazione4(String studio){
-        ArrayList listagiochi =new ArrayList<>();
+        ArrayList<Videogioco> listaGiochi = new ArrayList<>();
         ResultSet rs;
         try(Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/e_commerce_videogiochi","root","694200")){
-            PreparedStatement ps= con.prepareStatement("SELECT * FROM Videogioco WHERE Studio=?");
+            PreparedStatement ps= con.prepareStatement("SELECT * FROM Videogioco WHERE Studio = ?");
             ps.setString(1,studio);
             rs=ps.executeQuery();
             while(rs.next()){
                 Videogioco vd= new Videogioco();
 
+                vd.setID(rs.getInt(1));
+                vd.setNome(rs.getString(2));
+                vd.setPrezzo(rs.getDouble(3));
+                vd.setStudio(rs.getString(4));
+                vd.setData_uscita(rs.getDate(5));
+                vd.setPegi(rs.getInt(6));
+
+                listaGiochi.add(vd);
             }
+
+            return listaGiochi;
+            
         }catch(SQLException e){
             throw new RuntimeException(e);
         }
-        return
     }
 }
