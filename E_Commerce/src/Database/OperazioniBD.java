@@ -63,7 +63,7 @@ public class OperazioniBD {
             ps.setInt(1,pegi);
             ps.setInt(2,id);
             if(ps.executeUpdate()!=1){
-                throw new RuntimeException("Errore durante l'aggiornamento del telefono: nessuna riga aggiornata.");
+                throw new RuntimeException("Errore durante l'aggiornamento del Pegi: nessuna riga aggiornata.");
             }
         }catch(SQLException e){
             throw new RuntimeException(e);
